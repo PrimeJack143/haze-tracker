@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Haze Tracker · Dangcagan</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+    <div class="container" id="app">
+        <div class="header">
+            <div class="header-left">
+                <h1>🌫️ Haze Tracker · Dangcagan</h1>
+                <div class="sub">
+                    <span>Bukidnon, Philippines</span>
+                    <span class="coord">7.611107° N, 125.004850° E</span>
+                    <span class="badge"><span class="dot"></span> Live</span>
+                </div>
+            </div>
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                <button class="btn-refresh" id="refreshBtn" title="Fetch latest data">⟳ Refresh</button>
+            </div>
+        </div>
+
+        <div class="aqi-card" id="aqiCard">
+            <div class="aqi-ring">
+                <div class="aqi-circle" id="aqiCircle" style="background:#3b82f6;">
+                    <span class="number" id="aqiNumber">—</span>
+                    <span class="label" id="aqiLabel">AQI</span>
+                </div>
+                <div class="aqi-meta">
+                    <h2 id="aqiTitle">Loading …</h2>
+                    <div class="desc" id="aqiDesc">Fetching satellite + model data</div>
+                    <div class="pollutant-main" id="aqiMainPollutant">—</div>
+                    <div class="updated">
+                        <span id="aqiUpdated">Updating …</span>
+                        <span class="source-tag" id="aqiSource">OWM</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pollutants" id="pollutantsGrid">
+            <div class="pollutant-item"><div class="p-name">PM2.5</div><div class="p-value" id="p25">—</div><div class="p-unit">µg/m³</div><div class="p-bar"><div class="fill" id="p25Bar" style="width:0%;"></div></div></div>
+            <div class="pollutant-item"><div class="p-name">PM10</div><div class="p-value" id="p10">—</div><div class="p-unit">µg/m³</div><div class="p-bar"><div class="fill" id="p10Bar" style="width:0%;"></div></div></div>
+            <div class="pollutant-item"><div class="p-name">CO</div><div class="p-value" id="co">—</div><div class="p-unit">µg/m³</div><div class="p-bar"><div class="fill" id="coBar" style="width:0%;"></div></div></div>
+            <div class="pollutant-item"><div class="p-name">NO₂</div><div class="p-value" id="no2">—</div><div class="p-unit">µg/m³</div><div class="p-bar"><div class="fill" id="no2Bar" style="width:0%;"></div></div></div>
+            <div class="pollutant-item"><div class="p-name">O₃</div><div class="p-value" id="o3">—</div><div class="p-unit">µg/m³</div><div class="p-bar"><div class="fill" id="o3Bar" style="width:0%;"></div></div></div>
+            <div class="pollutant-item"><div class="p-name">SO₂</div><div class="p-value" id="so2">—</div><div class="p-unit">µg/m³</div><div class="p-bar"><div class="fill" id="so2Bar" style="width:0%;"></div></div></div>
+        </div>
+
+        <div class="chart-section">
+            <div class="chart-header">
+                <h3>📈 7‑Day AQI Trend</h3>
+                <span class="range">last 7 days</span>
+            </div>
+            <div class="chart-container">
+                <canvas id="historyChart"></canvas>
+            </div>
+        </div>
+
+        <div class="aqi-legend">
+            <span class="leg-item"><span class="swatch" style="background:#22c55e;"></span> 1 Good</span>
+            <span class="leg-item"><span class="swatch" style="background:#eab308;"></span> 2 Fair</span>
+            <span class="leg-item"><span class="swatch" style="background:#f97316;"></span> 3 Moderate</span>
+            <span class="leg-item"><span class="swatch" style="background:#ef4444;"></span> 4 Poor</span>
+            <span class="leg-item"><span class="swatch" style="background:#7c3aed;"></span> 5 Very Poor</span>
+        </div>
+
+        <div class="status-bar">
+            <span id="statusMessage">✅ System ready — fetching data every 30 min</span>
+            <span id="recordCount">📊 0 records in DB</span>
+        </div>
+
+        <div class="footer-credit">
+            Developed by
+            <a href="https://www.facebook.com/writtenbyjack" target="_blank" rel="noopener noreferrer">
+                JackLxproCoder
+            </a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
