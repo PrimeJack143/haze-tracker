@@ -1,4 +1,4 @@
-const API_BASE = '';
+const API_BASE = 'https://aircheckdangcagan.onrender.com';
 
 let chart = null;
 let refreshTimer = null;
